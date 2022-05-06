@@ -32,7 +32,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 	if (registrationForm) {
 		var polyglot = new Polyglot();
 		polyglot.extend({
-			'Field is required': 'Dit veld is verplicht',
+			'This field is required': 'Dit veld is verplicht',
 			'Enter a value less than or equal to {0}': 'Geef een waarde lager dan of gelijk aan {0} in',
 			'Please enter a valid e-mailaddress': 'Geef een geldig e-mailadres in',
 			'Enter a value greater than or equal to {0}': 'Geef een waarde hoger dan of gelijk aan {0} in',
