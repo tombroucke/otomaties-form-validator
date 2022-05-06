@@ -2,6 +2,10 @@
 
 Vanilla javascript library for adding form validation.
 
+## WARNING
+This package is incomplete. Some validation is missing:
+- Required checkboxes
+
 ## Usage
 
 ```javascript
