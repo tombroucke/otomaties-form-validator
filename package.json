@@ -1,0 +1,19 @@
+{
+  "name": "@tombroucke/otomaties-form-validator",
+  "version": "0.0.1",
+  "description": "Vanilla javascript library for adding form validation.",
+  "main": "form-validator.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tombroucke/otomaties-form-validator.git"
+  },
+  "author": "Tom Broucke",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tombroucke/otomaties-form-validator/issues"
+  },
+  "homepage": "https://github.com/tombroucke/otomaties-form-validator#readme"
+}
