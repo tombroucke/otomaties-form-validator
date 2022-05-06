@@ -6,6 +6,9 @@ Vanilla javascript library for adding form validation.
 This package is incomplete. Some validation is missing:
 - Required checkboxes
 
+## Installation
+`npm i @tombroucke/otomaties-form-validator`
+
 ## Usage
 
 ```javascript
