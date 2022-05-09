@@ -28,7 +28,14 @@ export default class FormValidator {
 		if (this.validate()) {
 			return;
 		}
+		if (this.invalidInputs().length > 0) {
+			this.invalidInputs()[0].el.focus();
+		}
 		e.preventDefault();
+	}
+
+	invalidInputs() {
+		return this.inputs.filter(input => Object.keys(input.errors()).length > 0);
 	}
 
 	validate() {
