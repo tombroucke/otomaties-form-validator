@@ -13,9 +13,9 @@ export default class FormValidator {
 
 	init() {
 		this.el.setAttribute('novalidate', '');
-
-		for (let index = 0; index < this.el.querySelectorAll('input, textarea, select').length; index++) {
-			const input = this.el.querySelectorAll('input, textarea, select')[index];
+		const inputElements = this.el.querySelectorAll('input:not([type="button"], [type="submit"]), textarea, select');
+		for (let index = 0; index < inputElements.length; index++) {
+			const input = inputElements[index];
 			this.inputs.push(InputFactory.make(input, this.polyglot));
 		}
 	}
