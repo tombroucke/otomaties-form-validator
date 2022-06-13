@@ -2,6 +2,7 @@ export default class Input {
 	constructor(el, polyglot) {
 		this.el = el;
 		this.polyglot = polyglot;
+		this.customErrorFunctions = [];
 		this.init();
 		this.bindEvents();
 	}
@@ -21,6 +22,9 @@ export default class Input {
 	}
 
 	errors(errors = {}) {
+		this.customErrorFunctions.forEach(customErrorFunction => {
+			customErrorFunction(errors, this);
+		});
 		return errors;
 	}
 
@@ -64,5 +68,9 @@ export default class Input {
 		if(errorMessage) {
 			errorMessage.remove();
 		}
+	}
+
+	customErrors(customErrorFunction) {
+		this.customErrorFunctions.push(customErrorFunction);
 	}
 }

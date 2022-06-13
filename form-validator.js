@@ -7,6 +7,7 @@ export default class FormValidator {
 		this.el = el;
 		this.polyglot = polyglot ? polyglot : new Translator();
 		this.inputs = [];
+		this.extraRules = [];
 		this.init();
 		this.bindEvents();
 	}
@@ -47,6 +48,21 @@ export default class FormValidator {
 				valid = false;
 			}
 		}
+		// this.extraRules.forEach(rule => {
+		// 	if(rule.errorFunction(false, rule.element)) {
+		// 		valid = false;
+		// 	}
+		// });
 		return valid;
+	}
+
+	addErrorFunction(element, errorFunction) {
+		let foundInput = false;
+		this.inputs.forEach(input => {
+			if(input.el == element) {
+				foundInput = input;
+			}
+		});
+		foundInput.customErrors(errorFunction);
 	}
 }

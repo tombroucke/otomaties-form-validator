@@ -41,3 +41,23 @@ window.addEventListener('DOMContentLoaded', (event) => {
 	}
 });
 ```
+
+## Custom Rules (addErrorFunction)
+
+You can add a custom error function to inputs. The `addErrorFunction()` function will be called during validation. 2 arguments are passed, the first one is the errors object, second one is the input object. The error object may already contain some errors. 
+
+```javascript
+const validator = new FormValidator(this.el);
+const pickupDateElements = this.el.querySelectorAll('[name*="pickupdates"]');
+pickupDateElements.forEach(element => {
+	validator.addErrorFunction(element, function(errors, input){
+		const categoryProducts = orderForm.el.querySelectorAll('[name*="products"][data-category-id="' + input.el.getAttribute('data-category-id') + '"]');
+		categoryProducts.forEach(categoryProduct => {
+			if (categoryProduct.value > 0 && element.value.length == 0) {
+				errors.required = input.polyglot.t('Please select a pickup date');
+			}
+		});
+		return errors;
+	});
+});
+```
