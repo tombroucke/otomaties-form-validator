@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/tombroucke/otomaties-form-validator/issues"
   },
-  "homepage": "https://github.com/tombroucke/otomaties-form-validator#readme"
+  "homepage": "https://github.com/tombroucke/otomaties-form-validator#readme",
+  "dependencies": {
+    "validator": "^13.7.0"
+  }
 }
