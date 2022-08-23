@@ -52,7 +52,7 @@ export default class Input {
 
 		for (const [key, error] of Object.entries(errors)) {
 			let errorListItem = document.createElement('li');
-			errorListItem.innerHTML = '<li>' + error + '</li>';
+			errorListItem.innerHTML = error;
 			unorderedList.appendChild(errorListItem);
 		}
 		errorMessage.appendChild(unorderedList);
