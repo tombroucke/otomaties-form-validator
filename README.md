@@ -63,8 +63,8 @@ pickupDateElements.forEach(element => {
 You can replace the default error messages with HTML data attributes:
 
 ```html
-	<input type="text" class="form-control" name="name" placeholder="Name" data-message-required="Please enter your name" required>
-	<input type="email" class="form-control" name="email" data-message-email-format="This format seems invalid" data-message-required="Please enter your email address" placeholder="E-mailadres" required>
-	<input class="form-check-input" type="checkbox" name="policy" id="policy-checkbox" data-message-required="Please accept our privacy policy" required>
+<input type="text" class="form-control" name="name" placeholder="Name" data-message-required="Please enter your name" required>
+<input type="email" class="form-control" name="email" data-message-email-format="This format seems invalid" data-message-required="Please enter your email address" placeholder="E-mailadres" required>
+<input class="form-check-input" type="checkbox" name="policy" id="policy-checkbox" data-message-required="Please accept our privacy policy" required>
 
 ```
