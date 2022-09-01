@@ -12,14 +12,11 @@ export default class InputFactory {
 		switch (el.nodeName.toLowerCase()) {
 			case 'textarea':
 				return InputFactory.textarea(el, polyglot);
-				break;
 			case 'select':
 				return InputFactory.select(el, polyglot);
-				break;
-		
+
 			default:
 				return InputFactory.input(el, polyglot);
-				break;
 		}
 	}
 
@@ -27,23 +24,17 @@ export default class InputFactory {
 		switch (el.getAttribute('type')) {
 			case 'email':
 				return new InputEmail(el, polyglot);
-				break;
 			case 'number':
 				return new InputNumber(el, polyglot);
-				break;
 			case 'password':
 				return new InputPassword(el, polyglot);
-				break;
 			case 'radio':
 				return new InputRadio(el, polyglot);
-				break;
 			case 'checkbox':
 				return new InputCheckbox(el, polyglot);
-				break;
-		
+
 			default:
 				return new InputText(el, polyglot);
-				break;
 		}
 	}
 

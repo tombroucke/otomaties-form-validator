@@ -3,6 +3,7 @@ export default class Input {
 		this.el = el;
 		this.polyglot = polyglot;
 		this.customErrorFunctions = [];
+    this.errorPlacement = this.el;
 		this.init();
 		this.bindEvents();
 	}
@@ -15,7 +16,7 @@ export default class Input {
 			input.el.addEventListener(e, input.update.bind(input));
 		})
 	}
- 
+
 	id() {
 		const name = this.el.getAttribute('name');
 		return name.replace('[', '-').replace(']', '');
@@ -28,6 +29,11 @@ export default class Input {
 		return errors;
 	}
 
+  errorMessage(key, defaultErrorMessage) {
+    const userDefinedErrorMessage = this.el.getAttribute('data-message-' + key);
+    return userDefinedErrorMessage ?? defaultErrorMessage;
+  }
+
 	val() {
 		return this.el.value;
 	}
@@ -38,7 +44,7 @@ export default class Input {
 			this.removeErrorMessage();
 		} else {
 			this.el.classList.add('error');
-			this.el.parentNode.insertBefore(this.createErrorMessageElement(this.errors()), this.el.nextSibling);
+			this.errorPlacement.parentNode.insertBefore(this.createErrorMessageElement(this.errors()), this.errorPlacement.nextSibling);
 		}
 	}
 
@@ -52,6 +58,7 @@ export default class Input {
 
 		for (const [key, error] of Object.entries(errors)) {
 			let errorListItem = document.createElement('li');
+			errorListItem.classList.add('error-message-' + key);
 			errorListItem.innerHTML = error;
 			unorderedList.appendChild(errorListItem);
 		}
