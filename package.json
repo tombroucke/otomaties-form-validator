@@ -1,6 +1,6 @@
 {
   "name": "@tombroucke/otomaties-form-validator",
-  "version": "0.0.11",
+  "version": "1.0.0",
   "description": "Vanilla javascript library for adding form validation.",
   "main": "form-validator.js",
   "scripts": {
