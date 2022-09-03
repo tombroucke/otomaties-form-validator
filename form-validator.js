@@ -7,7 +7,7 @@ export default class FormValidator {
 		this.el = el;
 		this.polyglot = polyglot ? polyglot : new Translator();
 		this.inputs = [];
-		this.extraRules = [];
+		this.valid = false;
 		this.init();
 		this.bindEvents();
 	}
@@ -21,6 +21,14 @@ export default class FormValidator {
 		}
 	}
 
+  isValid() {
+    return this.valid;
+  }
+
+  isInvalid() {
+    return !this.isValid();
+  }
+
 	bindEvents() {
 		this.el.addEventListener('submit', this.submit.bind(this));
 	}
@@ -29,6 +37,7 @@ export default class FormValidator {
 		if (this.validate()) {
 			return;
 		}
+
 		if (this.invalidInputs().length > 0) {
 			this.invalidInputs()[0].el.focus();
 		}
@@ -48,12 +57,8 @@ export default class FormValidator {
 				valid = false;
 			}
 		}
-		// this.extraRules.forEach(rule => {
-		// 	if(rule.errorFunction(false, rule.element)) {
-		// 		valid = false;
-		// 	}
-		// });
-		return valid;
+    this.valid = valid;
+		return this.valid;
 	}
 
 	addErrorFunction(element, errorFunction) {

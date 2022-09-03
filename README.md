@@ -21,6 +21,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 This library implements [polyglot](https://github.com/airbnb/polyglot.js). 
 
 ```javascript
+import FormValidator from '@tombroucke/otomaties-form-validator';
 import Polyglot from 'node-polyglot';
 
 window.addEventListener('DOMContentLoaded', (event) => {
@@ -43,6 +44,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
 You can add a custom error function to inputs. The `addErrorFunction()` function will be called during validation. 2 arguments are passed, the first one is the errors object, second one is the input object. The error object may already contain some errors. 
 
 ```javascript
+import FormValidator from '@tombroucke/otomaties-form-validator';
+
 const validator = new FormValidator(this.el);
 const pickupDateElements = this.el.querySelectorAll('[name*="pickupdates"]');
 pickupDateElements.forEach(element => {
@@ -66,5 +69,32 @@ You can replace the default error messages with HTML data attributes:
 <input type="text" class="form-control" name="name" placeholder="Name" data-message-required="Please enter your name" required>
 <input type="email" class="form-control" name="email" data-message-email-format="This format seems invalid" data-message-required="Please enter your email address" placeholder="E-mailadres" required>
 <input class="form-check-input" type="checkbox" name="policy" id="policy-checkbox" data-message-required="Please accept our privacy policy" required>
+```
 
+## HTML Forms
+
+Add some custom code to support Ibericode's HTML Forms
+
+```javascript
+import FormValidator from '@tombroucke/otomaties-form-validator';
+import Polyglot from 'node-polyglot';
+
+const htmlForms = document.querySelectorAll('.hf-form');
+
+var polyglot = new Polyglot();
+polyglot.extend({
+  'This field is required': sageVars.strings.field_required,
+  'Please select a pickup date': sageVars.strings.pickup_date_required,
+  'Please enter a valid e-mailaddress': sageVars.strings.valid_email,
+});
+
+for (let index = 0; index < htmlForms.length; index++) {
+  const element = htmlForms[index];
+  const validator = new FormValidator(element, polyglot);
+  element.addEventListener('submit', function (e) {
+    if (validator.isInvalid()) { // Or !validator.isValid()
+      e.stopPropagation();
+    }
+  });
+}
 ```
