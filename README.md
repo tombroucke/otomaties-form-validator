@@ -1,6 +1,6 @@
 # Otomaties Form Validator
 
-Vanilla javascript library for adding form validation.
+Vanilla javascript library for adding form validation. The error placement is specifically designed to work with Bootstrap 5's form structure.
 
 ## Installation
 `npm i @tombroucke/otomaties-form-validator`
@@ -72,11 +72,25 @@ You can replace the default error messages with HTML data attributes:
 <input class="form-check-input" type="checkbox" name="policy" id="policy-checkbox" data-message-required="Please accept our privacy policy" required>
 ```
 
-## HTML Forms
+## WordPress / HTML Forms / Sage 10
 
 Add some custom code to support Ibericode's HTML Forms
 
+```php
+add_action('wp_enqueue_scripts', function () {
+    bundle('app')->enqueueCss()->enqueueJs()->localize('sageVars', [
+        'strings' => [
+            'fieldRequired' => __('This field is required', 'sage'),
+            'validEmail' => __('Please enter a valid e-mailaddress', 'sage'),
+            'selectOption' => __('Please select an option', 'sage'),
+        ]
+    ]);
+}, 100);
+```
+
 ```javascript
+/* global sageVars:true */
+
 import FormValidator from '@tombroucke/otomaties-form-validator';
 import Polyglot from 'node-polyglot';
 
@@ -84,9 +98,9 @@ const htmlForms = document.querySelectorAll('.hf-form');
 
 var polyglot = new Polyglot();
 polyglot.extend({
-  'This field is required': sageVars.strings.field_required,
-  'Please select a pickup date': sageVars.strings.pickup_date_required,
-  'Please enter a valid e-mailaddress': sageVars.strings.valid_email,
+  'This field is required': sageVars.strings.fieldRequired,
+  'Please enter a valid e-mailaddress': sageVars.strings.validEmail,
+  'Please select an option': sageVars.strings.selectOption,
 });
 
 for (let index = 0; index < htmlForms.length; index++) {
