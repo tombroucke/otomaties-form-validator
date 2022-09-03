@@ -33,6 +33,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 			'Enter a value less than or equal to {0}': 'Geef een waarde lager dan of gelijk aan {0} in',
 			'Please enter a valid e-mailaddress': 'Geef een geldig e-mailadres in',
 			'Enter a value greater than or equal to {0}': 'Geef een waarde hoger dan of gelijk aan {0} in',
+			'Please select an option': 'Selecteer een optie',
 		})
 		new FormValidator(registrationForm, polyglot);
 	}
@@ -98,3 +99,8 @@ for (let index = 0; index < htmlForms.length; index++) {
   });
 }
 ```
+
+## FAQ
+
+### Uncaught TypeError: Cannot read properties of null (reading 'replace')
+- One of the input elements probably doesn't have the "name" attribute
