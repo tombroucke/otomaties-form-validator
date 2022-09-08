@@ -3,7 +3,7 @@ export default class Input {
 		this.el = el;
 		this.polyglot = polyglot;
 		this.customErrorFunctions = [];
-    this.errorPlacement = this.el;
+    	this.errorPlacement = this.el;
 		this.init();
 		this.bindEvents();
 	}
@@ -18,8 +18,8 @@ export default class Input {
 	}
 
 	id() {
-		const name = this.el.getAttribute('name');
-		return name.replace('[', '-').replace(']', '');
+		const name = this.el.getAttribute('name') ?? this.el.getAttribute('id');
+		return name ? name.replace('[', '-').replace(']', '') : '';
 	}
 
 	errors(errors = {}) {
