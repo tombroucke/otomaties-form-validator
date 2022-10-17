@@ -4,7 +4,7 @@ export default class InputCheckbox extends Input{
 	constructor(el, polyglot) {
 		super(el, polyglot);
 		this.isRequired = this.el.hasAttribute('required');
-    this.errorPlacement = this.el.parentNode;
+    	this.errorPlacement = this.el.parentNode;
 	}
 
 	errors(errors = {}) {

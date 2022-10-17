@@ -29,10 +29,10 @@ export default class Input {
 		return errors;
 	}
 
-  errorMessage(key, defaultErrorMessage) {
-    const userDefinedErrorMessage = this.el.getAttribute('data-message-' + key);
-    return userDefinedErrorMessage ?? defaultErrorMessage;
-  }
+	errorMessage(key, defaultErrorMessage) {
+		const userDefinedErrorMessage = this.el.getAttribute('data-message-' + key);
+		return userDefinedErrorMessage ?? defaultErrorMessage;
+	}
 
 	val() {
 		return this.el.value;
